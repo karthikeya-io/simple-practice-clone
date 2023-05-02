@@ -1,0 +1,13 @@
+/* Set a fixed height for the calendar container and make it scrollable */
+.fc-view-harness {
+    height: 500px;
+    overflow-y: auto;
+  }
+  
+  /* Ensure the calendar's header stays fixed */
+  .fc-header-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: white;
+  }

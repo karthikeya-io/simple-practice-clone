@@ -1,25 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Header from './components/Header';
+import Sidebar from './components/Sidebar';
+import CalendarPage from './pages/CalendarPage';
+import ClientsPage from './pages/ClientsPage';
+// import MeetingsPage from './pages/MeetingsPage';
+import { Box } from '@mui/material';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <Router>
+      <Header />
+      <Box display="flex">
+        <Sidebar />
+        <Box
+          component="main"
+          flexGrow={1}
+          sx={{
+            paddingTop: '64px', // Compensate for the header height
+            marginLeft: '200px', // Set the left margin to the width of the sidebar
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <Routes>
+            <Route path="/calendar" element={<CalendarPage />} />
+            <Route path="/clients" element={<ClientsPage />} />
+            {/* <Route path="/meetings" element={<MeetingsPage />} /> */}
+          </Routes>
+        </Box>
+      </Box>
+    </Router>
   );
 }
 
